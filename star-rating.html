@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Star rating</title>
+    <script src="./assets/js/tailwindcss-cdn.js"></script>
+    <style></style>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div>
+        <div id="rate-wrapper" class="flex items-center"></div>
+      </div>
+    </main>
+  </body>
+  <script type="text/javascript">
+    const stars = [1, 2, 3, 4, 5];
+    const starContainer = document.querySelector("#rate-wrapper");
+    let selectedStars = null;
+    stars.forEach((item) => {
+      let span = document.createElement("span");
+      span.classList.add("star", "cursor-pointer");
+      let att = document.createAttribute("data-value");
+      att.value = item;
+      span.setAttributeNode(att);
+      span.innerHTML = `
+                <svg
+                        width="40"
+                        height="40"
+                        viewBox="0 0 19 18"
+                        fill="none"
+                        class="fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.5 0L11.6329 6.56434H18.535L12.9511 10.6213L15.084 17.1857L9.5 13.1287L3.91604 17.1857L6.04892 10.6213L0.464963 6.56434H7.36712L9.5 0Z"
+                        />
+                      </svg>
+      `;
+      starContainer.append(span);
+    });
+    const singleStar = document.querySelectorAll("#rate-wrapper span");
+    for (let i = 0; i < singleStar.length; i++) {
+      singleStar[i].addEventListener("click", () => {
+        selectedStars = singleStar[i].getAttribute("data-value");
+        console.log(selectedStars);
+      });
+    }
+  </script>
+  <script type="text/javascript" src="./assets/js/main.js"></script>
+</html>
