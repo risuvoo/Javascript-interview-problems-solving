@@ -22,7 +22,8 @@
   <script type="text/javascript">
     const stars = [1, 2, 3, 4, 5];
     const starContainer = document.querySelector("#rate-wrapper");
-    let selectedStars = null;
+    let selectedHoverStars = null;
+    let selectedClickStars = null;
     stars.forEach((item) => {
       let span = document.createElement("span");
       span.classList.add("star", "cursor-pointer");
@@ -48,12 +49,10 @@
     const singleStar = document.querySelectorAll("#rate-wrapper span");
     for (let i = 0; i < singleStar.length; i++) {
       singleStar[i].addEventListener("click", () => {
-        selectedStars = singleStar[i].getAttribute("data-value");
-        console.log(selectedStars);
+        selectedClickStars = singleStar[i].getAttribute("data-value");
       });
       singleStar[i].addEventListener("mouseover", () => {
-        selectedStars = singleStar[i].getAttribute("data-value");
-        console.log(selectedStars);
+        selectedHoverStars = singleStar[i].getAttribute("data-value");
       });
     }
   </script>
